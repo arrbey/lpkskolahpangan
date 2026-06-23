@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-heading: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --color-primary-green: #16a34a;
+    --color-primary-dark: #14532d;
+    --color-primary-light: #dcfce7;
+    --color-accent: #4ade80;
+}
