@@ -35,18 +35,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 transition-all duration-300" id="navbar-container">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('home') }}" class="flex items-center space-x-3">
+                    <a href="{{ route('home') }}" class="flex items-center">
                         @if(!empty($settings['site_logo']))
-                            <img class="h-10 w-auto" src="{{ Storage::disk('s3')->url($settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Logo' }}">
+                            <img class="h-12 md:h-14 w-auto max-w-[220px] object-contain" src="{{ Storage::disk('s3')->url($settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Logo' }}">
                         @else
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-primary-green text-white p-2 rounded-lg">
-                                    <i data-lucide="leaf" class="w-6 h-6"></i>
-                                </div>
-                                <span class="font-bold text-xl tracking-tight text-primary-dark">
-                                    {{ $settings['site_name'] ?? 'Skolah Pangan' }}
-                                </span>
-                            </div>
+                            <span class="font-bold text-xl tracking-tight text-primary-dark">
+                                {{ $settings['site_name'] ?? 'Skolah Pangan' }}
+                            </span>
                         @endif
                     </a>
                 </div>
@@ -138,11 +133,14 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- Brand Info -->
                 <div class="space-y-4 md:col-span-2">
-                    <div class="flex items-center space-x-4 text-white">
-                        <div class="bg-primary-green p-1.5 rounded">
-                            <i data-lucide="leaf" class="w-5 h-5 text-white"></i>
-                        </div>
-                        <span class="font-bold text-lg tracking-tight">{{ $settings['site_name'] ?? 'LPK Skolah Pangan' }}</span>
+                    <div class="flex items-center text-white">
+                        @if(!empty($settings['site_logo']))
+                            <div class="inline-flex bg-white rounded-2xl px-3 py-2">
+                                <img class="h-12 w-auto max-w-[240px] object-contain" src="{{ Storage::disk('s3')->url($settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Logo' }}">
+                            </div>
+                        @else
+                            <span class="font-bold text-lg tracking-tight">{{ $settings['site_name'] ?? 'LPK Skolah Pangan' }}</span>
+                        @endif
                     </div>
                     <p class="text-sm text-slate-300 max-w-sm">
                         {{ $settings['site_tagline'] ?? 'Lembaga Pelatihan Kerja terpercaya untuk mencetak tenaga profesional di industri pangan.' }}

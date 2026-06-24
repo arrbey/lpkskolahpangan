@@ -78,7 +78,7 @@ class SettingController extends Controller
             'wa_number' => 'required|string|max:50',
             'wa_greeting' => 'nullable|string|max:500',
 
-            'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:4096',
         ];
 
         $validated = $request->validate($rules);

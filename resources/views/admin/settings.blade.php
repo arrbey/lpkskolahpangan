@@ -31,12 +31,12 @@
                 </div>
 
                 <div>
-                    <label for="site_logo" class="block text-sm font-semibold text-slate-700 mb-2">Logo Website</label>
+                    <label for="site_logo" class="block text-sm font-semibold text-slate-700 mb-2">Full Logo Website</label>
                     <input type="file" name="site_logo" id="site_logo" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-slate-50 file:text-primary-green hover:file:bg-primary-light transition">
-                    <p class="text-xs text-slate-400 mt-1">Format: JPG, PNG, SVG (maks. 1MB). Kosongkan jika tidak ingin mengganti.</p>
+                    <p class="text-xs text-slate-400 mt-1">Upload logo lengkap/wordmark. Format: JPG, PNG, SVG, WebP (maks. 4MB). Kosongkan jika tidak ingin mengganti.</p>
                     @if(!empty($settings['site_logo']))
-                        <div class="mt-3 p-2 border border-slate-100 bg-slate-50 rounded-xl inline-block">
-                            <img src="{{ Storage::disk('s3')->url($settings['site_logo']) }}" alt="Logo" class="h-10 w-auto">
+                        <div class="mt-3 p-3 border border-slate-100 bg-slate-50 rounded-xl inline-block">
+                            <img src="{{ Storage::disk('s3')->url($settings['site_logo']) }}" alt="Logo" class="h-16 w-auto max-w-[260px] object-contain">
                         </div>
                     @endif
                 </div>
