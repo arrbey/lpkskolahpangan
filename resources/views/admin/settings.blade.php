@@ -36,7 +36,7 @@
                     <p class="text-xs text-slate-400 mt-1">Format: JPG, PNG, SVG (maks. 1MB). Kosongkan jika tidak ingin mengganti.</p>
                     @if(!empty($settings['site_logo']))
                         <div class="mt-3 p-2 border border-slate-100 bg-slate-50 rounded-xl inline-block">
-                            <img src="{{ asset('storage/' . $settings['site_logo']) }}" alt="Logo" class="h-10 w-auto">
+                            <img src="{{ Storage::disk('s3')->url($settings['site_logo']) }}" alt="Logo" class="h-10 w-auto">
                         </div>
                     @endif
                 </div>
@@ -121,7 +121,7 @@
                     <p class="text-xs text-slate-400 mt-1">Format: JPG, PNG, WebP (maks. 2MB). Kosongkan jika tidak ingin mengganti.</p>
                     @if(!empty($settings['hero_image']))
                         <div class="mt-3 p-2 border border-slate-100 bg-slate-50 rounded-xl inline-block">
-                            <img src="{{ asset('storage/' . $settings['hero_image']) }}" alt="Hero Image" class="h-28 w-auto rounded-lg">
+                            <img src="{{ Storage::disk('s3')->url($settings['hero_image']) }}" alt="Hero Image" class="h-28 w-auto rounded-lg">
                         </div>
                     @endif
                 </div>
@@ -139,7 +139,7 @@
                         <p class="text-xs text-slate-400 mt-1">Format: JPG, PNG, WebP (maks. 2MB). Kosongkan jika tidak ingin mengganti.</p>
                         @if(!empty($settings['hero_video_thumbnail']))
                             <div class="mt-3 p-2 border border-slate-100 bg-slate-50 rounded-xl inline-block">
-                                <img src="{{ asset('storage/' . $settings['hero_video_thumbnail']) }}" alt="Video Thumbnail" class="h-20 w-auto rounded-lg">
+                                <img src="{{ Storage::disk('s3')->url($settings['hero_video_thumbnail']) }}" alt="Video Thumbnail" class="h-20 w-auto rounded-lg">
                             </div>
                         @endif
                     </div>

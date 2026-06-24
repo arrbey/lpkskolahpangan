@@ -4,7 +4,7 @@
 
     <!-- Section 1: Hero & Why Us Section (Integrated for unified background) -->
     @if(($settings['hero_show'] ?? '1') === '1')
-    <section id="hero" class="relative min-h-[90vh] flex items-center justify-center bg-cover bg-center pt-28 pb-16 md:pt-36 md:pb-20 text-center" style="background-image: url('{{ !empty($settings['hero_image']) ? asset('storage/' . $settings['hero_image']) : 'https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?q=80&w=1600' }}');">
+    <section id="hero" class="relative min-h-[90vh] flex items-center justify-center bg-cover bg-center pt-28 pb-16 md:pt-36 md:pb-20 text-center" style="background-image: url('{{ !empty($settings['hero_image']) ? Storage::disk('s3')->url($settings['hero_image']) : 'https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?q=80&w=1600' }}');">
         <!-- Dark Green Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-slate-950/75 via-primary-dark/80 to-primary-dark/95"></div>
         
@@ -60,7 +60,7 @@
                         <div class="lg:col-span-1 bg-primary-green text-white rounded-3xl lg:rounded-r-3xl lg:rounded-tl-3xl lg:rounded-bl-none border border-emerald-600 shadow-xl overflow-hidden flex flex-col transition-all duration-300 group relative z-10 lg:-ml-px why-us-green-container">
                             <!-- Video Thumbnail -->
                             <div class="relative h-40 w-full overflow-hidden bg-slate-800">
-                                <img src="{{ !empty($settings['hero_video_thumbnail']) ? asset('storage/' . $settings['hero_video_thumbnail']) : 'https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=600' }}" alt="Video Profil" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-90">
+                                <img src="{{ !empty($settings['hero_video_thumbnail']) ? Storage::disk('s3')->url($settings['hero_video_thumbnail']) : 'https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=600' }}" alt="Video Profil" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-90">
                                 <div class="absolute inset-0 bg-black/15"></div>
                                 <!-- Circular Play Button -->
                                 <button type="button" id="open-video-btn" class="absolute inset-0 m-auto w-12 h-12 bg-white hover:bg-[#C2DB1A] text-slate-900 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition duration-150 focus:outline-none" aria-label="Putar Video Profil">
@@ -173,7 +173,7 @@
                         <!-- Image Container -->
                         <div class="relative h-56 overflow-hidden bg-slate-100">
                             @if($program->image)
-                                <img src="{{ asset('storage/' . $program->image) }}" alt="{{ $program->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                                <img src="{{ Storage::disk('s3')->url($program->image) }}" alt="{{ $program->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                             @else
                                 <div class="w-full h-full bg-gradient-to-br from-primary-green/80 to-primary-dark flex items-center justify-center p-8 text-white relative">
                                     <i data-lucide="award" class="w-12 h-12 text-white/30 mb-2"></i>
@@ -230,7 +230,7 @@
                     <!-- Photo Container -->
                     <div class="w-full md:w-36 h-40 bg-slate-100 rounded-2xl flex-shrink-0 overflow-hidden border border-slate-100 relative">
                         @if($brochure->image)
-                            <img src="{{ asset('storage/' . $brochure->image) }}" alt="{{ $brochure->title }}" class="w-full h-full object-cover">
+                            <img src="{{ Storage::disk('s3')->url($brochure->image) }}" alt="{{ $brochure->title }}" class="w-full h-full object-cover">
                         @else
                             <div class="w-full h-full bg-gradient-to-br from-emerald-100 to-primary-light flex items-center justify-center text-primary-green">
                                 <i data-lucide="file-text" class="w-10 h-10"></i>

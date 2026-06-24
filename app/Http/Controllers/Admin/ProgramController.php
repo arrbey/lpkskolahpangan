@@ -34,7 +34,7 @@ class ProgramController extends Controller
         $validated['is_active'] = $request->has('is_active');
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('programs', 'public');
+            $path = $request->file('image')->store('programs', 's3');
             $validated['image'] = $path;
         }
 
@@ -66,9 +66,9 @@ class ProgramController extends Controller
 
         if ($request->hasFile('image')) {
             if ($program->image) {
-                Storage::disk('public')->delete($program->image);
+                Storage::disk('s3')->delete($program->image);
             }
-            $path = $request->file('image')->store('programs', 'public');
+            $path = $request->file('image')->store('programs', 's3');
             $validated['image'] = $path;
         }
 
@@ -81,7 +81,7 @@ class ProgramController extends Controller
     {
         $program = Program::findOrFail($id);
         if ($program->image) {
-            Storage::disk('public')->delete($program->image);
+            Storage::disk('s3')->delete($program->image);
         }
         $program->delete();
 

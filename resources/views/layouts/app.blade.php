@@ -37,7 +37,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}" class="flex items-center space-x-3">
                         @if(!empty($settings['site_logo']))
-                            <img class="h-10 w-auto" src="{{ asset('storage/' . $settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Logo' }}">
+                            <img class="h-10 w-auto" src="{{ Storage::disk('s3')->url($settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Logo' }}">
                         @else
                             <div class="flex items-center space-x-4">
                                 <div class="bg-primary-green text-white p-2 rounded-lg">

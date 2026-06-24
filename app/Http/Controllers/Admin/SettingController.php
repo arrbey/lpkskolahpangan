@@ -113,9 +113,9 @@ class SettingController extends Controller
         if ($request->hasFile('site_logo')) {
             $oldLogo = Setting::get('site_logo');
             if ($oldLogo) {
-                Storage::disk('public')->delete($oldLogo);
+                Storage::disk('s3')->delete($oldLogo);
             }
-            $path = $request->file('site_logo')->store('logos', 'public');
+            $path = $request->file('site_logo')->store('logos', 's3');
             Setting::set('site_logo', $path, 'general');
         }
 
@@ -123,9 +123,9 @@ class SettingController extends Controller
         if ($request->hasFile('hero_image')) {
             $oldHeroImg = Setting::get('hero_image');
             if ($oldHeroImg) {
-                Storage::disk('public')->delete($oldHeroImg);
+                Storage::disk('s3')->delete($oldHeroImg);
             }
-            $path = $request->file('hero_image')->store('hero', 'public');
+            $path = $request->file('hero_image')->store('hero', 's3');
             Setting::set('hero_image', $path, 'hero');
         }
 
@@ -133,9 +133,9 @@ class SettingController extends Controller
         if ($request->hasFile('hero_video_thumbnail')) {
             $oldThumb = Setting::get('hero_video_thumbnail');
             if ($oldThumb) {
-                Storage::disk('public')->delete($oldThumb);
+                Storage::disk('s3')->delete($oldThumb);
             }
-            $path = $request->file('hero_video_thumbnail')->store('hero', 'public');
+            $path = $request->file('hero_video_thumbnail')->store('hero', 's3');
             Setting::set('hero_video_thumbnail', $path, 'hero');
         }
 

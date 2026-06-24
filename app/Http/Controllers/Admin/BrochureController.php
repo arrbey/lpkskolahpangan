@@ -36,7 +36,7 @@ class BrochureController extends Controller
         $validated['is_active'] = $request->has('is_active');
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('brochures', 'public');
+            $path = $request->file('image')->store('brochures', 's3');
             $validated['image'] = $path;
         }
 
@@ -70,9 +70,9 @@ class BrochureController extends Controller
 
         if ($request->hasFile('image')) {
             if ($brochure->image) {
-                Storage::disk('public')->delete($brochure->image);
+                Storage::disk('s3')->delete($brochure->image);
             }
-            $path = $request->file('image')->store('brochures', 'public');
+            $path = $request->file('image')->store('brochures', 's3');
             $validated['image'] = $path;
         }
 
@@ -85,7 +85,7 @@ class BrochureController extends Controller
     {
         $brochure = Brochure::findOrFail($id);
         if ($brochure->image) {
-            Storage::disk('public')->delete($brochure->image);
+            Storage::disk('s3')->delete($brochure->image);
         }
         $brochure->delete();
 

@@ -36,7 +36,7 @@
                         <tr class="hover:bg-slate-50/50 transition">
                             <td class="px-6 py-4">
                                 @if($program->image)
-                                    <img src="{{ asset('storage/' . $program->image) }}" alt="Program" class="w-16 h-10 object-cover rounded-lg border border-slate-100">
+                                    <img src="{{ Storage::disk('s3')->url($program->image) }}" alt="Program" class="w-16 h-10 object-cover rounded-lg border border-slate-100">
                                 @else
                                     <div class="w-16 h-10 bg-slate-100 text-slate-400 flex items-center justify-center rounded-lg border border-slate-100 text-xs">
                                         No Image

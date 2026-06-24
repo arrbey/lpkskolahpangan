@@ -30,7 +30,7 @@
                 <p class="text-xs text-slate-400 mt-1">Format: JPG, PNG, WebP (maks. 2MB). Kosongkan jika tidak ingin mengganti.</p>
                 @if($brochure->image)
                     <div class="mt-3 p-2 border border-slate-100 bg-slate-50 rounded-xl inline-block">
-                        <img src="{{ asset('storage/' . $brochure->image) }}" alt="Brosur image" class="h-24 w-auto rounded-lg">
+                        <img src="{{ Storage::disk('s3')->url($brochure->image) }}" alt="Brosur image" class="h-24 w-auto rounded-lg">
                     </div>
                 @endif
             </div>
