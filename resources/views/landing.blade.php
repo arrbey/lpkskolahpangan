@@ -516,10 +516,36 @@
         const closeModalBtn = document.getElementById('close-modal-btn');
         const closeModalBg = document.getElementById('close-modal-bg');
         const modalIframe = document.getElementById('modal-iframe');
-        const videoUrl = "{{ $settings['hero_video_url'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ' }}";
+        const videoUrl = @json($settings['hero_video_url'] ?? 'https://www.youtube.com/embed/dQw4w9WgXcQ');
+
+        function getYouTubeEmbedUrl(url) {
+            try {
+                const parsedUrl = new URL(url);
+                let videoId = '';
+
+                if (parsedUrl.hostname.includes('youtu.be')) {
+                    videoId = parsedUrl.pathname.split('/').filter(Boolean)[0] || '';
+                } else if (parsedUrl.pathname.includes('/embed/')) {
+                    videoId = parsedUrl.pathname.split('/embed/')[1]?.split('/')[0] || '';
+                } else if (parsedUrl.pathname.includes('/shorts/')) {
+                    videoId = parsedUrl.pathname.split('/shorts/')[1]?.split('/')[0] || '';
+                } else {
+                    videoId = parsedUrl.searchParams.get('v') || '';
+                }
+
+                if (!videoId) return url;
+
+                const embedUrl = new URL(`https://www.youtube.com/embed/${videoId}`);
+                embedUrl.searchParams.set('autoplay', '1');
+                embedUrl.searchParams.set('rel', '0');
+                return embedUrl.toString();
+            } catch (error) {
+                return url;
+            }
+        }
 
         function openModal() {
-            modalIframe.src = videoUrl + (videoUrl.includes('?') ? '&' : '?') + "autoplay=1";
+            modalIframe.src = getYouTubeEmbedUrl(videoUrl);
             videoModal.classList.remove('pointer-events-none');
             videoModal.classList.remove('opacity-0');
             videoModal.classList.add('opacity-100');

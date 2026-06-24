@@ -128,8 +128,9 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
                     <div>
-                        <label for="hero_video_url" class="block text-sm font-semibold text-slate-700 mb-2">Tautan Video Profil (YouTube Embed URL)</label>
-                        <input type="text" name="hero_video_url" id="hero_video_url" value="{{ old('hero_video_url', $settings['hero_video_url'] ?? '') }}" class="block w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-primary-green focus:border-transparent focus:outline-none transition" placeholder="https://www.youtube.com/embed/...">
+                        <label for="hero_video_url" class="block text-sm font-semibold text-slate-700 mb-2">Tautan Video Profil YouTube</label>
+                        <input type="text" name="hero_video_url" id="hero_video_url" value="{{ old('hero_video_url', $settings['hero_video_url'] ?? '') }}" class="block w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-primary-green focus:border-transparent focus:outline-none transition" placeholder="https://www.youtube.com/watch?v=...">
+                        <p class="text-xs text-slate-400 mt-1">Bisa pakai format watch, youtu.be, shorts, atau embed.</p>
                     </div>
 
                     <div>
