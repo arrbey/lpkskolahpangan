@@ -204,9 +204,6 @@
             
             <div class="mt-8 pt-8 border-t border-emerald-950/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400">
                 <p>{{ $settings['copyright_text'] ?? '© 2026 LPK Skolah Pangan. All rights reserved.' }}</p>
-                <div class="mt-4 sm:mt-0 space-x-6">
-                    <a href="{{ route('admin.login') }}" class="hover:text-primary-green">CMS Admin</a>
-                </div>
             </div>
         </div>
     </footer>
